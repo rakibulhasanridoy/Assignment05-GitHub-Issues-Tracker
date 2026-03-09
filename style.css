@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+
+
+.active-tab {
+  background-color: #4f46e5;
+  color: white;
+}
+
+
+.inactive-tab {
+  background-color: transparent;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.inactive-tab:hover {
+  background-color: #f3f4f6;
+}
+
+
+
+
+.issue-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.15s;
+  border-top: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.issue-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  transform: translateY(-2px);
+}
+
+
+
+.issue-card.open {
+  border-top-color: #22c55e;
+}
+
+.issue-card.closed {
+  border-top-color: #6366f1;
+}
+
+
+
+
+
+.priority-high {
+  background-color: #fee2e2;
+  color: #dc2626;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+
+
+
+.priority-medium {
+  background-color: #fef9c3;
+  color: #ca8a04;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+
+
+.priority-low {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+
+
+
+
+.label-bug {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+
+.label-help {
+  background-color: #fef3c7;
+  color: #92400e;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+.label-enhancement {
+  background-color: #d1fae5;
+  color: #065f46;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.label-default {
+  background-color: #e5e7eb;
+  color: #374151;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+
+.icon-open {
+  color: #22c55e;
+}
+.icon-closed {
+  color: #6366f1;
+}
+
+
+
+
+.badge-open {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+
+.badge-closed {
+  background-color: #ede9fe;
+  color: #4c1d95;
+}
+
+
+
+
+
+.issue-card {
+  animation: fadeInUp 0.3s ease both;
+}

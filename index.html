@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>GitHub Issues Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-[#f6f8fa] min-h-screen">
+
+
+
+
+  <!-- Signin Section -->
+  <div id="signInPage" class="min-h-screen bg-[#f6f8fa] flex items-center justify-center">
+    <div class="bg-white rounded-2xl shadow-lg p-10 w-full max-w-md">
+      <div class="flex flex-col items-center mb-6">
+        <div class="github-icon">
+      <img src="./assets/github-logo.png" alt="">
+        </div>
+        <h1 class="text-2xl font-bold text-gray-900">GitHub Issues Tracker</h1>
+     <p class="text-gray-500 text-sm mt-1">Sign in to manage your issues</p>
+      </div>
+
+      <!-- Form -->
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-800 mb-1">Username</label>
+          <input id="usernameInput" type="text" placeholder="Enter Username"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          <p class="text-xs text-indigo-500 mt-1">Default: admin</p>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-800 mb-1">Password</label>
+          <input id="passwordInput" type="password" placeholder="Enter Password"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          <p class="text-xs text-indigo-500 mt-1">Default: admin123</p>
+        </div>
+        <div id="loginError" class="hidden text-red-500 text-sm text-center">Invalid username or password.</div>
+        <button id="signInBtn"
+      class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 rounded-lg transition-colors">
+          Sign In
+        </button>
+      </div>
+
+
+
+
+      
+      <div class="flex items-center my-5 gap-3">
+        <div class="flex-1 h-px bg-gray-200"></div>
+      <span class="text-gray-400 text-sm">OR</span>
+        <div class="flex-1 h-px bg-gray-200"></div>
+      </div>
+      <div>
+      <p class="text-center text-sm text-gray-500 mb-2">Demo Credentials:</p>
+        <div class="bg-gray-50 border border-gray-200 rounded-lg py-4 px-6 text-sm text-center space-y-1">
+   <p><span class="font-semibold">Username:</span> admin</p>
+     <p><span class="font-semibold">Password:</span> admin123</p>
+       </div>
+      </div>
+    </div>
+  </div>
+  <div id="mainPage" class="hidden min-h-screen bg-[#f6f8fa]">
+
+
+
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-40">
+      <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+
+        <div class="flex items-center gap-2">
+          <img src="./assets/github-logo.png" width="28" height="28" alt="">
+          <span class="font-bold text-gray-900 text-lg">GitHub Issues Tracker</span>
+        </div>
+       
+
+
+
+
+   <div class="flex items-center gap-3">
+        <div class="relative">
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+            </span>
+        <input id="searchInput" type="text" placeholder="Search issues..."
+          class="border border-gray-300 rounded-lg pl-9 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 w-64" />
+          </div>
+          <button id="newIssueBtn"
+          class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-4 py-2 rounded-lg flex items-center gap-1 transition-colors">
+        <span class="text-lg leading-none">+</span> New Issue
+      </button>
+          <button id="signOutBtn" class="text-sm text-gray-500 hover:text-gray-800 transition-colors">Sign Out</button>
+      </div>
+      </div>
+    </nav>
+    <div class="max-w-7xl mx-auto px-6 py-8">
+      <div class="flex gap-2 mb-6">
+         <button class="tab-btn active-tab px-5 py-2 rounded-lg text-sm font-semibold" data-tab="all">All</button>
+    <button class="tab-btn inactive-tab px-5 py-2 rounded-lg text-sm font-semibold" data-tab="open">Open</button>
+      <button class="tab-btn inactive-tab px-5 py-2 rounded-lg text-sm font-semibold" data-tab="closed">Closed</button>
+      </div>
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">    
+     <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center gap-3">
+         <div class="bg-indigo-100 rounded-full p-2">
+          <img src="./assets/Aperture.png" alt="">            
+              </div>
+         <div>
+              <h2 class="font-bold text-gray-900 text-lg"id="issueCount">0Issues</h2>
+            <p class="text-gray-500 text-sm">Track and manage yourprojectissues</p>
+            </div>
+          </div>
+        <div class="flex items-center gap-4 text-sm">
+        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-green-500 inline-block"></span> Open</span>
+            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-indigo-500 inline-block"></span> Closed</span>
+          </div>
+        </div>
+
+
+
+
+        <div id="loadingSpinner" class="hidden flex justify-center items-center py-20">
+      <span class="loading loading-dots loading-lg text-indigo-500"></span>
+        </div>
+
+        
+
+  <div id="issuesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+     </div>
+        <div id="emptyState" class="hidden text-center py-16 text-gray-400">
+          <p class="font-medium">No issues found</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Modal -->
+  <dialog id="newIssueModal" class="modal">
+    <div class="modal-box max-w-lg">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-bold text-xl text-gray-900">Create New Issue</h3>
+    <button class="btn btn-sm btn-circle btn-ghost" onclick="document.getElementById('newIssueModal').close()">✕</button>
+      </div>
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Title</label>
+      <input id="newTitle" type="text" placeholder="Issue title" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+      <textarea id="newDescription" placeholder="Describe the issue..." rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"></textarea>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Priority</label>
+            <select id="newPriority" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+           <option value="HIGH">High</option>
+           <option value="MEDIUM">Medium</option>
+              <option value="LOW">Low</option>
+            </select>
+      </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+         <select id="newStatus" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="open">Open</option>
+           <option value="closed">Closed</option>
+            </select>
+          </div>
+       </div>
+
+
+
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Labels (comma separated)</label>
+     <input id="newLabels" type="text" placeholder="e.g. bug, help wanted" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        </div>
+       <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Assignee</label>
+      <input id="newAssignee" type="text" placeholder="e.g. john_doe" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        </div>
+      </div>
+      <div class="modal-action mt-6">
+     <button onclick="document.getElementById('newIssueModal').close()" class="btn btn-ghost text-sm">Cancel</button>
+        <button id="createIssueBtn" class="btn bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-6">Create Issue</button>
+      </div>
+    </div>
+  </dialog>
+
+
+
+
+
+  <dialog id="issueDetailModal" class="modal">
+    <div class="modal-box max-w-lg">
+      <h3 class="font-bold text-xl text-gray-900 mb-3" id="detailTitle"></h3>
+   <div class="flex items-center gap-3 mb-4 flex-wrap">
+        <span id="detailStatusBadge" class="status-badge px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1"></span>
+        <span class="text-gray-400 text-sm">•</span>
+      <span class="text-gray-500 text-sm">Opened by <span id="detailAuthor" class="font-medium text-gray-700"></span></span>
+        <span class="text-gray-400 text-sm">•</span>
+     <span class="text-gray-500 text-sm" id="detailDate"></span>
+      </div>
+      <div id="detailLabels" class="flex flex-wrap gap-2 mb-4"></div>
+      <p class="text-gray-600 text-sm mb-6" id="detailDescription"></p>
+      <div class="grid grid-cols-2 gap-4 mb-2">
+        <div>
+          <p class="text-sm text-gray-500 mb-1">Assignee:</p>
+         <p class="font-semibold text-gray-800 text-sm" id="detailAssignee"></p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500 mb-1">Priority:</p>
+       <span id="detailPriority" class="priority-badge px-3 py-1 rounded-full text-xs font-bold"></span>
+        </div>
+      </div>
+    <div class="modal-action">
+        <button onclick="document.getElementById('issueDetailModal').close()" class="btn bg-indigo-600 hover:bg-indigo-700 text-white text-sm px-6">Close</button>
+      </div>
+    </div>
+  </dialog>
+  <script src="script.js"></script>
+  
+</body>
+</html>
