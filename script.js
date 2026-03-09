@@ -176,7 +176,12 @@ function renderIssues() {
       <p class="text-gray-500 text-xs mb-3 line-clamp-2">${issue.description || issue.body || ""}</p>
       <div class="flex flex-wrap gap-1 mb-4">${labelsHTML}</div>
       <div class="border-t border-gray-100 pt-3 text-xs text-gray-500 space-y-0.5">
-        <p>#${num} by <span class="font-medium text-gray-700">${author}</span></p>
+      <p class="flex items-center gap-1">
+      <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-indigo-100 text-indigo-600 font-bold text-xs">
+        ${author.charAt(0).toUpperCase()}
+      </span>
+      <span>#${num} by <span class="font-medium text-gray-700">${author}</span></span>
+    </p>
         <p>${formattedDate}</p>
       </div>`;
     issuesGrid.appendChild(card);
