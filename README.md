@@ -11,6 +11,18 @@ A simple web app to track GitHub issues with login, search, and filtering.
 - CSS / Tailwind / DaisyUI
 - JavaScript (Vanilla)
 
+## ✨ Features
+
+- Login with demo credentials
+- View all issues in a 4-column card layout
+- Filter issues by All, Open, and Closed tabs
+- Search issues with debounce
+- Create new issues with a modal form
+- Color coded priority badges (High, Medium, Low)
+- Green border for open issues, purple for closed
+- Loading spinner while fetching data
+- Responsive design
+
 ## 📡 API Endpoints
 - All Issues: https://phi-lab-server.vercel.app/api/v1/lab/issues
 - Single Issue: https://phi-lab-server.vercel.app/api/v1/lab/issue/{id}
